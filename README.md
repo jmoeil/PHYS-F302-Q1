@@ -5,4 +5,4 @@ Notes de cours issues du cours magitral donné par Prof. Frank Ferrari, lors de 
 Ce projet est développé par et pour des étudiant.e.s, et contient probablement de nombreuses fautes. N'hésitez pas à nous les signaler en nous contactant par mail.
 
 [Juian Moeil](mailto:juian.moeil@ulb.be)
-[Alexandre Hallemans][mailto:alexandre.hallemans@ulb.be]
+[Alexandre Hallemans](mailto:alexandre.hallemans@ulb.be)
