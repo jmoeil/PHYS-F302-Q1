@@ -1,6 +1,8 @@
-\documentclass{report}
+\documentclass[11pt,twoside,a4paper]{report}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage[french]{babel}
-\usepackage{graphicx}
 \usepackage{amsmath,amsfonts,amsthm,amssymb}
 \usepackage{bm}
 \usepackage{mathrsfs}
@@ -10,16 +12,17 @@
 \usepackage{caption}
 \usepackage{multirow}
 \usepackage{physics}
+\usepackage{braket} % `physics' already implements braket notation, which one should we use?
+\usepackage{siunitx}
 \usepackage{tikz}
-\usepackage{braket}
 \usepackage[allcolors=true]{hyperref}
 \usepackage{cleveref}
 \usepackage{pgfplotstable}
-\usepackage{siunitx}
 \usepackage{wrapfig}
 \usepackage{graphicx}
 \usepackage{subfiles}
 \usepackage{systeme}
+\usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage{titlesec}
 \usepackage{lmodern}
@@ -27,71 +30,93 @@
 \usepackage{textcomp}
 \usepackage{geometry}
 \geometry{top=3cm, bottom=3cm, left=2.5cm, right=2.5cm}
-
-\numberwithin{equation}{part}
-\counterwithin*{section}{part}
-
 \pgfplotsset{width=10cm,compat=1.16}
 
-\newcommand{\ti}{\times}
-\newcommand{\h}{\hbar}
+% Counter stuff
+\numberwithin{equation}{part}
+\counterwithin*{section}{part}
+\setcounter{tocdepth}{2}
+
+% Random utilities...
+\newcommand{\ti}{\ensuremath{\times}}
+\newcommand{\h}{\ensuremath{\hbar}}
+\newcommand{\med}{\ensuremath\cdot}
+
 \renewcommand{\d}{\mathrm{d}}
 \renewcommand{\thepart}{\arabic{part}}
 
-
+% Special formatting for paragraphs
 \titleformat{\paragraph}
-{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+  {\normalfont\normalsize\bfseries}
+  {\theparagraph}
+  {1em}
+  {}
 \titlespacing*{\paragraph}
-{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+  {0pt}
+  {3.25ex plus 1ex minus .2ex}
+  {1.5ex plus .2ex}
 
-\title{\textbf{PHYS-F302 - Mécanique Quantique} \\ \textit{Basé sur le cours théorique de Prof. $\href{mailto:frank.ferrari@ulb.be}{\text{Frank Ferrari}}$}}
-\author{$\href{mailto:juian.moeil@ulb.be}{\text{Moeil Juian}}$}
-\date{\textbf{Année académique 2021-2022}}
-
+% Defining new theorem environments
 \newtheorem{theorem}{Théorème}[section]
 \newtheorem{definition}[theorem]{Définition}
 \newtheorem{lemma}[theorem]{Lemme}
-\newtheorem{Property}[theorem]{Proposition}
+\newtheorem{property}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollaire}
 \newtheorem{remark}[theorem]{Remarque}
-\newtheorem*{preuve}{Preuve}
 \newtheorem{reminder}[theorem]{Rappel théorique}
-\newtheorem{exemple}[theorem]{Exemple}
+\newtheorem{example}[theorem]{Exemple}
 
-\renewcommand\qedsymbol{$\blacksquare$}
+\renewcommand{\proofname}{Preuve}
+\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
 
-\setcounter{tocdepth}{2}
-
-\usepackage{enumitem}
 
 %%% Début ajouts Sami
 % Definition boite grise avec couleur grise définie
 \definecolor{BGgris}{RGB}{222,230,230}
-\newcommand\bg[2]{
-\begin{center}
-\fcolorbox{white}{BGgris}{\parbox{.9\linewidth}{\begin{large} \textit{#1} \end{large} \\
+\newcommand\bg[2]{%
+  \begin{center}%
+    \fcolorbox{white}{BGgris}{%
+      \parbox{.9\linewidth}{%
+        \begin{large} \textit{#1} \end{large} \\%
+        #2%
+      }%
+    }%
+  \end{center}%
+}
 
-#2 }}
-\end{center}}
 % Boite d'alerte
 \definecolor{BGorange}{RGB}{255, 216, 154}
-\newcommand\probleme[1]{
-\begin{center}
-\fcolorbox{white}{BGorange}{\parbox{.9\linewidth}{\begin{large} \textbf{Problème} \end{large} \\
-
-#1}}
-\end{center}}
+\newcommand\probleme[1]{%
+  \begin{center}%
+    \fcolorbox{white}{BGorange}{%
+      \parbox{.9\linewidth}{%
+        \begin{large} \textbf{Problème} \end{large} \\%
+        #1%
+      }%
+    }%
+  \end{center}%
+}
 
 \setlength{\fboxsep}{2em} % espace entre le bord d'une boite et le texte dedans
 
 %%% Fin ajouts Sami
 
-\begin{document}
+\title{%
+  \textbf{PHYS-F302 - Mécanique Quantique} \\
+  \textit{Basé sur le cours théorique du Prof. \href{mailto:frank.ferrari@ulb.be}{Frank Ferrari}}
+}
+\author{%
+  \href{mailto:juian.moeil@ulb.be}{Moeil Juian} \\
+  \href{mailto:hallemans.alexandre@ulb.be}{Hallemans Alexandre}
+}
+\date{\textbf{Année académique 2021-2022}}
 
+
+\begin{document}
 \maketitle
 
 \begin{abstract}
-    Ces notes sont basées sur les cours et les notes de Frank Ferrari. Dans la mesure où elles sont été rédigées par des étudiant.e.s, il est probable qu'elles contiennent des fautes. N'hésitez pas à les signaler à $\href{mailto:juian.moeil@ulb.be}{\text{Juian Moeil}}$ lorsque vous en trouvez.
+    Ces notes sont basées sur les cours et les notes de Frank Ferrari. Dans la mesure où elles sont rédigées par des étudiant\med{}e\med{}s, il est probable qu'elles contiennent des fautes. N'hésitez pas à les signaler à \href{mailto:juian.moeil@ulb.be}{Juian Moeil} ou à \href{mailto:hallemans.alexandre@ulb.be}{Hallemans Alexandre} lorsque vous en trouvez.
 \end{abstract}
 \newpage
 
@@ -105,14 +130,14 @@ Dans la description classique de la Mécanique, on définit un espace de phase $
 
 En Mécanique Quantique, on définit un état comme une raie dans un espace de Hilbert $\mathcal{H}$. En introduisant la relation d'équivalence
 \begin{equation}
-\label{equivalence}
-    \ket{\psi} \sim \ket{\phi} \iff \exists \alpha\in\mathbb{C}\setminus\{0\} \text{tel que} \ket{\psi}=\alpha\ket{\phi} ;
+\label{eq:equivalence}
+    \ket{\psi} \sim \ket{\phi} \iff \exists \alpha\in\mathbb{C}\setminus\{0\} \text{ tel que } \ket{\psi}=\alpha\ket{\phi} ;
 \end{equation}
 nous pouvons définir l'espace des états comme étant $\mathcal{H}\setminus\ref{equivalence}$. Les raies sont les classes d'équivalence, et $\ket{\psi}$ et $\ket{\phi}$ représentent le même état.\\
 
-\begin{Property}
+\begin{property}
     Puisque $\mathcal{H}$ est un espace vectoriel, nous avons que pour les deux états $\ket{\psi}$ $\ket{\phi}$, $\alpha\ket{\psi}+\beta\ket{\psi}=\ket{\varphi}$ est également un état de $\mathcal{H}$.
-\end{Property}
+\end{property}
 
 \begin{remark}
     Cette proposition traduit le principe de superposition.
