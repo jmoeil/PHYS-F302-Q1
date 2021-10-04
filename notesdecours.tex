@@ -110,12 +110,32 @@ En Mécanique Quantique, on définit un état comme une raie dans un espace de H
 nous pouvons définir l'espace des états comme étant $\mathcal{H}\setminus\ref{equivalence}$. Les raies sont les classes d'équivalence, et $\ket{\psi}$ et $\ket{\phi}$ représentent le même état.\\
 
 \begin{Property}
-    Puisque $\mathcal{H}$ est un espace vectoriel, nous avons que pour les deux états $\ket{\psi}$ $\ket{\phi}$, $\alpha\ket{\psi}+\beta\ket{\psi}=\ket{\varphi}$ est également un état de $\mathcal{H}$.
+    Puisque $\mathcal{H}$ est un espace vectoriel, nous avons que pour deux états $\ket{\psi},\ket{\phi} \in\mathcal{H}$, 
+    \begin{equation}
+        \alpha\ket{\psi}+\beta\ket{\psi}=\ket{\varphi}
+    \end{equation}
+    est également un état de $\mathcal{H}$. Il s'agit du principe de superposition : toute combinaison linéaire d'état donne un autre état dans la base de $\mathcal{H}$ilbert.
+    \label{Superposition}
 \end{Property}
 
+\section{Second postulat: observables $\ket{\hat{P}}$}
+
+\begin{definition}
+    Un opérateur est hermitien lorsque $A=A^\dagger$.
+\end{definition}
+
+\begin{definition}
+    Un opérateur hermitien est dit observable lorsqu'il possède une base de vecteurs propres.
+\end{definition}
+
 \begin{remark}
-    Cette proposition traduit le principe de superposition.
+    Le théorème spectral nous indique alors que le spectre $A=A^\dagger$ est réel. Notons également que le spectre peut-être discret et/ou continu. 
 \end{remark}
+
+\begin{remark}
+    Une conséquence de cet résultat est la non commutativité des opérateurs. De manière générale, nous avons que $[A,B] \neq 0$.
+\end{remark}
+
 
 
 \end{document}
