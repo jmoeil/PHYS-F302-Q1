@@ -43,7 +43,7 @@
 \titlespacing*{\paragraph}
 {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
-\title{\textbf{PHYS-F302 - Mécanique Quantique} \\ \textit{Basé sur le cours théorique de Prof. $\href{mailto:frank.ferrari@ulb.be}{\text{Frank Ferrari}}$}}
+\title{\textbf{PHYS-F302 - Mécanique Quantique} \\ \textit{Basé sur le cours magistral de Prof. $\href{mailto:frank.ferrari@ulb.be}{\text{Frank Ferrari}}$}}
 \author{$\href{mailto:juian.moeil@ulb.be}{\text{Moeil Juian}}$}
 \date{\textbf{Année académique 2021-2022}}
 
@@ -98,6 +98,13 @@
 
 \chapter{Postulats de la Mécanique Quantique}
 
+Dans ce chapitre, nous allons énoncer les postulats de la mécanique quantique. Ils permettront de répondre à des questions important dans l'élaboration de la théorique quantique; à savoir:
+\begin{enumerate}
+\item Comment décrire mathématiquement l'état d'un système quantique à un instant donné?
+\item Comment, cet état étant donné, prévoir les résultats de mesure des diverses grandeurs physiques?
+\item Comment trouver l'état du système à un instant t quelconque lorsqu'on connait  ce état à l'instant $t_0$?
+\end{enumerate}
+
 \section{Premier postulat : description des états quantiques}
 
 Dans la description classique de la Mécanique, on définit un espace de phase $M$, de dimension $2n$, $\forall n\in\mathbb{Z}$; permettant ainsi d'introduire les coordonnées $\left(q^i,p_j\right)$ liées par le crochet de poisson fondamental $\{q^i,p_j\}=\delta^i_j$. Un état est caractérisé par un point P dans l'espace des phases.\\
@@ -125,16 +132,65 @@ nous pouvons définir l'espace des états comme étant $\mathcal{H}\setminus\ref
 \end{definition}
 
 \begin{definition}
-    Un opérateur hermitien est dit observable lorsqu'il possède une base de vecteurs propres.
+    Un opérateur hermitien est appelée observable lorsqu'il possède une base de vecteurs propres.
 \end{definition}
 
+\begin{theorem}
+    Soit A une matrice hermitienne. Alors, il existe une base orthonormale $\{\ket{\lambda_i}\}$ telle que $A\ket{\lambda_i}=\lambda_i\ket{\lambda_i}$ pour toute valeure propre $\lambda_i\in\mathbb{R}$.
+\end{theorem}
+
 \begin{remark}
-    Le théorème spectral nous indique alors que le spectre $A=A^\dagger$ est réel. Notons également que le spectre peut-être discret et/ou continu. 
+    Cet énoncé classique d'algèbre linéaire porte le nom de théorème spectral.
 \end{remark}
 
 \begin{remark}
-    Une conséquence de cet résultat est la non commutativité des opérateurs. De manière générale, nous avons que $[A,B] \neq 0$.
+    La mesure de l'observable A donne une valeur propre $\lambda_i$.
 \end{remark}
+
+Nous avons maintenant appris comment décrire un état quantique \textit{à un instant donné} et la version quantique d'une quantité observable. Il nous reste à développer la notion de mesure et d'évolution des états. C'est par ce dernier point que nous allons commencer, en énoncant le postulat d'évolution.
+
+\section{Troisième postulat: Evolution dans le temps}
+
+\begin{definition}
+    L'évolution dans le temps est donné par un groupe unitaire à un paramètre $U(t)$, respectant les deux propriétés suivantes:
+    \begin{itemize}
+        \item $U(t)$ est un opérateur unitaire pour tout t ;
+        \item $U(t_1)U(t_2)=U(t_1+t_2)$.
+    \end{itemize}
+    Un tel opérateur $U(t)$ est appelé \emph{opérateur d'évolution}.
+\end{definition}
+
+\begin{Property}
+    Si $\ket{\psi}$ est l'état du système à un instant $t_0$ donné, alors l'état à un temps $t>t_0$ sera donné par 
+    \begin{math}
+        \ket{\psi}(t) = \hat{U}(t-t_0)\ket{\psi}
+    \end{math}
+\end{Property}
+
+\begin{Property}
+    \label{Operateur d'evolution}
+    Nous pouvons toujours écrire l'opérateur d'évolution sous la forme $U(t) = e^{-\frac{iH(t-t_0)}{\hbar}}\ket{\psi}$. 
+\end{Property}
+
+\begin{definition}
+    L'opérateur H que nous avons fais apparaître en \ref{Operateur d'evolution} est appelé Hamiltonien. 
+\end{definition}
+
+En particulier, nous retrouvons de cette égalité l'équation de Schrödinger. En effet,
+\begin{align}
+    \frac{d\ket{\psi}}{dt} (t)= -\frac{iH}{\hbar}e^{-\frac{i(t-t_0)H}{\hbar}}\ket{\psi}(t=0) &= -\frac{iH}{\hbar}\ket{\psi}(t)\\
+    i\hbar\frac{d\ket{\psi}}{dt} (t) &= H\ket{\psi}(t) \label{Schrodinger}
+\end{align}
+
+\begin{remark}
+    L'équation d'évolution est linéaire ; elle est donc en particulier compatible avec le principe de superposition du premier postulat.
+\end{remark}
+
+Arrêtons-nous l'espace d'un instant pour nous poser une question. Jusque là, nous avons vu des équations linéaires en le temps: mieux, nous faisons face à des équations simples à résoudre. En partant de ce constat, il serait légitime de se demander comment; à partir d'équations linéaires, émergent les propriétés hautement non-linéaires rencontrées parfois en mécanique classique. Un bon exemple est les systèmes chaotiques.\\
+
+Il se trouve que toute la complexité d'un système est encodée dans le spectre de l'Hamiltonien du système.
+
+\section{Quatrième postulat: Interprétation de Bohr}
 
 
 
