@@ -1,0 +1,71 @@
+\documentclass[../notesdecours.tex]{subfiles}
+
+\begin{document}
+    \part{Symétries en mécanique quantique}
+
+    \chapter{Description générale des symétries}
+
+    \section{Pourquoi étudier les symétries ?}
+
+    Les symétries jouent un rôle fondamental en physique, et la mécanique quantique n'y fait pas exception. Elles permettent d'expliquer les dégénérescences des valeurs propres des observables, et peuvent expliquer certaines propriétés intrinsèques des particules, comme par exemple le spin qui est une conséquence de la symétrie sous les rotations.
+
+    Pour illustrer cela, considérons un oscillateur harmonique à deux dimensions non-couplé, de masses identiques. Le hamiltonien du système s'écrit donc
+
+    \begin{equation}
+    H = \frac{p_1^2}{2m} + \frac{1}{2}m\omega^2x_1^2 + \frac{p_2^2}{2m} + \frac{1}{2}m\omega^2x_2^2
+    \end{equation}
+
+    On peut construire les états propres de $H$ à l'aide des opérateurs création comme dans le cas à une dimension, nous avons donc les états 
+
+    \begin{equation}
+    \ket{n_1, n_2} \equiv (a_1^\dagger)^{n_1} (a_2^\dagger)^{n_2} \ket{0}
+    \end{equation}
+
+    Les valeurs propres de $H$ sont
+
+    \begin{align}
+    E_{n_1, n_2} &= \hbar\omega(n_1 + n_2 + 1) \\
+    &= \hbar\omega (N+1)
+    \end{align}
+
+    Il est évident que la valeur propre $E_N$ est $N+1$ fois dégénérée. Cette dégénérescence du spectre vient en réalité d'une symétrie de $H$. Quelle symétrie serait susceptible de la provoquer?
+
+    \begin{itemize}
+        \item Invariance par translation temporelle ? Oui, mais étant vraie pour tout système physique isolé (sans échange d'énergie), elle ne provoque pas la dégénérescence observée.
+        \item Invariance par rotation dans les plans $(p_1p_1)$ et $(x_1x_2)$ ? En effet, les termes $(p_1^2 + p_2^2)$ et $(x_1^2 + x_2^2)$ apparaissent pour les impulsions et pour les positions, ce qui induit une dépendance radiale dans ces plans. Cependant, les matrices représentant ces rotations appartiennent à $SO(2)$, qui est un groupe abélien. Cela n'implique alors pas de dégénérescense du spectre (Pourquoi ?)
+    \end{itemize}
+
+    Ces symétries évidentes n'expliquent pas la dégénérescence du spectre, il existe donc une symétrie cachée au problème !
+
+
+    Réécrivons le hamiltonien $H = \hbar\omega(a_1^\dagger a_1 + a_2^\dagger a_2 + 1)$. Si nous appliquons une transformation des opérateurs $a'_i = U_i^j a_j$, avec $U^\dagger U = \mathds{1}$, le Hamiltonien reste inchangé. La propriété de la matrice $U$ Nous indique donc que le hamiltonien est invariant sous l'action de $U(2)$, groupe des matrices unitaires $2\times 2$.
+
+    Le sous-espace associé à la valeur propre $\hbar\omega(N+1)$ est donc une représentation du groupe $SU(2)$ de spin $N/2$, dont la dimension\footnotemark coïncide avec le degré de dégénérescence de cette valeur propre.
+
+    \footnotetext{Pour rappel, la dimension d'une représentation de SU(2) de spin $j$ est de dimension $2j+1$.}
+
+    \section{Discussion générale}
+
+    Comment décrit-on les symétries en mécanique quantique? Une symétrie est intuitivement un endomorphisme de l'espace des états $\mathcal{E}$, qui doit préserver la physique décrite, autrement dit le spectre des observables.
+
+    \begin{definition}
+    Un endomorphisme $\mathcal{U}:\mathcal{E} \to \mathcal{E}$ est une \emph{symétrie} si et seulement si $\forall A \in \mathcal{L}(\mathcal{H})$, $\mathcal{U}(A)$ possède le même spectre que $A$. En général,
+    $$ \tr(\rho A) = \tr(\mathcal{U}(\rho)\mathcal{U}(A)) $$
+    \end{definition}
+
+    Une conséquence de cette propriété fondamentale des symétries est le théorème de Wigner, qui permet de faire le lien entre la symétrie et sa représentation sous forme d'opérateur.
+
+    Pour les besoins du théorème, introduisons d'abord les notions d'opérateur \emph{anti-linéaire} et \emph{anti-unitaire}.
+
+    \begin{definition}
+    Un opérateur \emph{anti-linéaire} est un opérateur qui vérifie la propriété
+    $$ A(\alpha\phi + \beta\chi) = \alpha^* A\phi + \beta^* A\chi $$ \\
+    Un opérateur \emph{anti-unitaire} est un opérateur qui vérifie la propriété
+    \end{definition}
+
+    \begin{theorem}[Wigner, 1931]
+    Pour toute symétrie $\mathcal{U}$ dans $\mathcal{E}$, il existe un opérateur $U$ linéaire unitaire, ou anti-linéaire anti-unitaire tel que $\mathcal{U}(\rho) = U\rho U^{-1}$
+    \end{theorem}
+
+
+\end{document}
